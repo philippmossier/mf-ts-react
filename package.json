@@ -1,0 +1,13 @@
+{
+  "name": "mf-ts-react",
+  "scripts": {
+    "install": "concurrently 'cd ./app1 && npm install' 'cd ./app2 && npm install' 'cd ./app3 && npm start'",
+    "start": "concurrently 'cd ./app1 && npm start' 'cd ./app2 && npm start' 'cd ./app3 && npm start'",
+    "build": "concurrently 'cd ./app1 && npm run build' 'cd ./app2 && npm run build' 'cd ./app3 && npm run build'",
+    "serve": "concurrently 'cd ./app1 && npm run serve' 'cd ./app2 && npm run serve' 'cd ./app3 && npm run serve'",
+    "clean": "concurrently 'cd ./app1 && npm run clean' 'cd ./app2 && npm run clean' 'cd ./app3 && npm run clean'"
+  },
+  "devDependencies": {
+    "concurrently": "7.2.1"
+  }
+}

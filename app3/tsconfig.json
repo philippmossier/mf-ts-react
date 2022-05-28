@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+	  "sourceMap": true,
+	  "strict": true,
+	  "jsx": "react"
+	},
+	"include": ["src/**/*", "../app1/src/app3.d.ts"]
+  }
+  
