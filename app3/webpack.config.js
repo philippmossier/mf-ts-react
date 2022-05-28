@@ -8,7 +8,7 @@ module.exports = {
   entry: {
     bundle: path.resolve(__dirname, 'src/index'),
   },
-    output: {
+  output: {
     filename: '[name].[contenthash].js', // named after one of the entry keys (contenthash is for caching)
     publicPath: 'auto',
   },
@@ -18,6 +18,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3003,
+    open: true,
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -44,7 +45,11 @@ module.exports = {
       },
       shared: {
         react: { singleton: true, eager: true, requiredVersion: PACKAGE.dependencies.react },
-        "react-dom": { singleton: true, eager: true, requiredVersion: PACKAGE.dependencies["react-dom"] }
+        'react-dom': {
+          singleton: true,
+          eager: true,
+          requiredVersion: PACKAGE.dependencies['react-dom'],
+        },
       },
     }),
     new HtmlWebpackPlugin({
