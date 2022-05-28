@@ -39,7 +39,9 @@ webpack.config.js tsconfig.json ./public/index.html
 },
 ```
 
-*Add webpack-config for host app (app1) and define remotes*
+*Add module-federation realted config to webpack*
+*Shell/host microfrontend (app1) loads other microfrontends (app2,app3)*
+*We have to define remotes which the shell want's to cosnume*
 ```webpack.config.js
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
@@ -59,7 +61,7 @@ module.exports = {
 };
 ```
 
-*app2*
+**app2 and app2 exposes their content, so we have to use exposes instead of remotes**
 ```
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
@@ -78,8 +80,25 @@ module.exports = {
 		})
 	]
 }
+```
+```
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
-
+module.exports = {
+	devServer: { port: 3003},
+	plugins: [
+		new ModuleFederationPlugin({
+			name: 'app3',
+			filename: 'remoteEntry.js',
+			remotes: {}
+			exposes: {
+				'./Button': './src/Button',
+				// './App': './src/index', // to expose the whole App
+			},
+			shared: {}
+		})
+	]
+}
 ```
 
 
